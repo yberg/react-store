@@ -1,0 +1,52 @@
+{
+  "Apple" : {
+    "name" : "Apple",
+    "price" : 3,
+    "stock" : 1995
+  },
+  "Banana" : {
+    "name" : "Banana",
+    "price" : 5,
+    "stock" : 729
+  },
+  "Beans" : {
+    "name" : "Beans",
+    "price" : 11,
+    "stock" : 180
+  },
+  "Bread" : {
+    "name" : "Bread",
+    "price" : 20,
+    "stock" : 96
+  },
+  "Ham" : {
+    "name" : "Ham",
+    "price" : 15,
+    "stock" : 148
+  },
+  "Milk" : {
+    "name" : "Milk",
+    "price" : 7,
+    "stock" : 110
+  },
+  "Peach" : {
+    "name" : "Peach",
+    "price" : 6,
+    "stock" : 300
+  },
+  "Potato" : {
+    "name" : "Potato",
+    "price" : 1,
+    "stock" : 2000
+  },
+  "Soda" : {
+    "name" : "Soda",
+    "price" : 9,
+    "stock" : 120
+  },
+  "Tomato" : {
+    "name" : "Tomato",
+    "price" : 2,
+    "stock" : 700
+  }
+}

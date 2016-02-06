@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Store</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="https://cdn.firebase.com/js/client/2.4.0/firebase.js"></script>
+</head>
+<body>
+  <div id="app" class="container"></div>
+  <script src="app.js"></script>
+</body>
+<style>
+  body {
+    background: #eee;
+  }
+  #main {
+    width: 400px;
+    height: 400px;
+    margin: 50px auto;
+  }
+  #form {
+    position: fixed;
+    margin-top: -20px;
+    width: 250px;
+    border-radius: 3px;
+    margin-left: -280px;
+  }
+  #cart {
+    position: fixed;
+    margin-top: -60px;
+    width: 300px;
+    border-radius: 3px;
+    margin-left: 415px;
+  }
+  .animation-enter {
+    opacity: 0.01;
+  }
+  .animation-enter.animation-enter-active {
+    opacity: 1;
+    transition: opacity 2s ease-in;
+  }
+</style>
+</html>
