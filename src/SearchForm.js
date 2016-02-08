@@ -16,19 +16,18 @@ export default class SearchForm extends React.Component {
       minStock: ReactDOM.findDOMNode(this.refs.input2min).value,
       maxStock: ReactDOM.findDOMNode(this.refs.input2max).value
     });
-  };
+  }
   render() {
     var search = this.search;
     var title = {
       marginLeft: '-15px'
-    };
+    }
     var form = {
       marginBottom: '8px'
-    };
+    }
     var button = {
-      marginRight: '-15px',
-      outline: 'none'
-    };
+      marginRight: '-15px'
+    }
     return(
       <div>
         <h3><span style={title} className="glyphicon glyphicon-search"></span> {this.props.title}</h3>
@@ -51,11 +50,11 @@ export default class SearchForm extends React.Component {
                       { field.min && field.max &&
                         <input className="form-control" onChange={search} ref={"input" + i + "max"} type={field.type}
                           name={field.name + (field.max ? "Max" : "")} placeholder={field.max} autoComplete="off" /> }
-                      { field.unit && field.max &&
+                      { field.unit &&
                         <span className="input-group-addon">{field.unit}</span> }
                     </div>
                   </div>
-                );
+                )
               })
             }
             <button onClick={search} style={button} className="btn btn-primary pull-right">
@@ -68,14 +67,12 @@ export default class SearchForm extends React.Component {
   }
 }
 SearchForm.propTypes = {
+  search: React.PropTypes.func.isRequired,
+  fields: React.PropTypes.array,
   title: React.PropTypes.string,
-  method: React.PropTypes.string,
-  acceptCharset: React.PropTypes.string,
   value: React.PropTypes.string
 }
 SearchForm.defaultProps = {
   title: "Search",
-  method: "get",
-  acceptCharset: "utf-8",
   value: "Search"
 }

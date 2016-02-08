@@ -14,6 +14,9 @@
   body {
     background: #eee;
   }
+  button {
+    outline: none !important;
+  }
   #main {
     width: 400px;
     height: 400px;
@@ -28,10 +31,16 @@
   }
   #cart {
     position: fixed;
-    margin-top: -60px;
+    margin-top: -58px;
     width: 300px;
     border-radius: 3px;
     margin-left: 415px;
+  }
+  .remove::before {
+
+  }
+  .remove:hover {
+    visibility: visible;
   }
   .animation-enter {
     opacity: 0.01;

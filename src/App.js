@@ -35,11 +35,15 @@ class App extends React.Component {
     super(props);
     this.state = {
       filter: '',
-      products: []
-    };
+      products: [], 
+      cart: []
+    }
     this.products = this.state.products;
+    this.cart = this.state.cart;
     this.search = this.search.bind(this);
-  };
+    this.buy = this.buy.bind(this);
+    this.checkout = this.checkout.bind(this);
+  }
   componentWillMount() {
     this.firebaseRef = new Firebase("https://react-grocery-store.firebaseio.com/products");
     this.firebaseRef.on("child_added", function(dataSnapshot) {
@@ -48,17 +52,46 @@ class App extends React.Component {
         products: this.products
       });
     }.bind(this));
-  };
+  }
   componentWillUnmount() {
     this.firebaseRef.off();
-  };
+  }
   search(filter) {
     this.setState({
       filter: filter
     });
-  };
+  }
+  buy(product, fbref) {
+    let found = false;
+    this.cart.map(function(cartItem) {
+      if (cartItem.name === product.name) {
+        cartItem.amount = cartItem.amount + 1;
+        found = true;
+      }
+    });
+    if (!found) {
+      this.cart.push({
+        name: product.name,
+        price: product.price,
+        amount: 1
+      });
+    }
+    this.setState({
+      cart: this.cart
+    });
+    fbref.update({
+      stock: product.stock - 1
+    });
+  }
+  checkout() {
+    this.cart = [];
+    this.setState({
+      cart: []
+    });
+  }
   render() {
     var filter = this.state.filter;
+    var buy = this.buy;
     var firebase = "https://react-grocery-store.firebaseio.com/products/";
     return(
       <div>
@@ -76,7 +109,8 @@ class App extends React.Component {
                       if ((filter.maxPrice === "" || filter.maxPrice === undefined) || filter.maxPrice >= product.price) {
                         if (filter.minStock === undefined || filter.minStock <= product.stock) {
                           if ((filter.maxStock === "" || filter.maxStock === undefined) || filter.maxStock >= product.stock) {
-                            return <StoreItem fbref={new Firebase(firebase + product.name)} key={i} product={product} />
+                            return <StoreItem buy={buy} fbref={new Firebase(firebase + product.name)} 
+                              key={i} product={product} />
                           }
                         }
                       }
@@ -86,7 +120,7 @@ class App extends React.Component {
               }
             </div>
             <div id="cart">
-              <Cart />
+              <Cart products={this.state.cart} checkout={this.checkout} />
             </div>
           </div>
         </ReactCSSTransitionGroup>
